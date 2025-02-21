@@ -1,0 +1,33 @@
+#### Baseline Formulas, improve or change as needed #### 
+
+# Non Normalized Risk Score with scaling factors: (alpha, beta, gamma, epsilon)
+   R = (alpha*DegreeCentrality) + 
+  (beta*BetweenessCentrality) + 
+  (gamma*EigenvectorCentrality) +
+  (epsilon*ClosenessCentrality)
+
+# Normalized Risk Score with scaling factors: (alpha, beta, gamma, epsilon)
+   R_norm = (alpha * norm(DegreeCentrality)) + 
+  (beta * norm(BetweenessCentrality)) + 
+  (gamma * norm(EigenvectorCentrality)) +
+  (epsilon * norm(ClosenessCentrality))  
+
+# Sigmoid transformation 
+  Sigmoid(R^*)
+
+# Final Risk (p is the priority weight of the error type, which in this example
+# will be either type-1 or type-2)
+  FR = R * (p * PriorityError + (1-p) * NonPriorityError)
+
+# Cost Impact (cost.csv) where success = 1 (i.e. produces one unit of value),
+#  and an error is a negative value, (e.g. -3 would mean an error 
+#  negates 3 successful units of value).   
+   C = R * ErrorCost + (1−R) * SuccessValue 
+
+# Total Success Revenue where revenue unit is whatever dollar value 
+# given to a successful output. This could be an value unit (time saved etc.).
+  Total Success Revenue (TS) = Final Success Rate * Success Value * Revenue Unit 
+# Total Error Loss = 
+  Final Risk * Error Cost * Revenue Unit
+# Net Revenue Impact = 
+  Total Success Revenue + Total Error Loss
