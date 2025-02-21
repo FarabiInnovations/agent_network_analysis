@@ -2,7 +2,7 @@ import pandas as pd
 import numpy as np
 import networkx as nx
 import matplotlib.pyplot as plt
-from scipy.special import expit  # Sigmoid function
+from scipy.special import expit 
 
 #weight factors for centrality measures
 alpha, beta, gamma, epsilon = 0.35, 0.25, 0.25, 0.15  
@@ -58,7 +58,7 @@ raw_risk_scores = {
     for node in G.nodes()
 }
 
-# optional Sigmoid Transformation to Risk Score
+# optional Sigmoid transformation to Risk Score
 # if intuition is there might be something more nuanced to capture 
 transformed_risk_scores = {node: expit(raw_risk_scores[node]) for node in G.nodes()}
 
@@ -75,19 +75,19 @@ final_risk_scores = {
     for node in G.nodes()
 }
 
-# Define contagion parameters
-contagion_factor = 0.3    # Increase to risk per fraction of failed neighbors
+#  contagion parameters
+contagion_factor = 0.3    # increase to risk per fraction of failed neighbors
 
-num_simulations = 10000  # Number of simulation runs
+num_simulations = 10000  # sim runs
 nodes = list(final_risk_scores.keys())
 
 # Prepare dictionaries to store results per node and overall network
 simulation_results = {node: [] for node in nodes}
-network_net_revenue = []  # Store net revenue per simulation across all nodes
-stability_iterations = []  # Number of iterations until stable state per simulation
+network_net_revenue = []  # store net revenue per simulation across all nodes
+stability_iterations = []  #number of iterations until stable state 
 
 for sim in range(num_simulations):
-    # Initialize each simulation run with baseline failure status and risk
+    # init each simulation run with baseline failure status and risk
     node_failed = {node: False for node in nodes}
     current_risk = {node: final_risk_scores[node] for node in nodes}
     
@@ -104,22 +104,22 @@ for sim in range(num_simulations):
                     node_failed[node] = True
                     new_failures = True
         
-        # Update risk for nodes that haven't failed based on neighbors' status
+        # Update risk for nodes that haven't failed based on neighbors'stat
         for node in nodes:
             if not node_failed[node]:
                 neighbors = list(G.neighbors(node))
                 if neighbors:
-                    # Calculate fraction of neighbors that have failed
+                    # calc fraction of neighbors that have failed
                     fraction_failed = np.mean([node_failed.get(neighbor, False) for neighbor in neighbors])
                     updated_risk = final_risk_scores[node] + contagion_factor * fraction_failed
-                    current_risk[node] = min(updated_risk, 1.0)  # Ensure risk stays at most 1
+                    current_risk[node] = min(updated_risk, 1.0)  #capped at 1
                 else:
                     current_risk[node] = final_risk_scores[node]
     
-    # Record the number of iterations until stability was reached
+    # number of iterations until stability was reached
     stability_iterations.append(iteration)
     
-    # Once stable, calculate outcomes per node based on final state.
+    # once stable, calc outcomes per node based on final state
     sim_net_revenue = 0
     for node in nodes:
         if node_failed[node]:
@@ -130,11 +130,11 @@ for sim in range(num_simulations):
         sim_net_revenue += outcome
     network_net_revenue.append(sim_net_revenue)
 
-# Convert results to DataFrame for analysis:
+
 sim_df = pd.DataFrame(simulation_results)
 sim_df['Network_Net_Revenue'] = network_net_revenue
 
-# Analyze simulation outcomes
+
 network_mean = np.mean(network_net_revenue)
 network_std = np.std(network_net_revenue)
 avg_iterations = np.mean(stability_iterations)
@@ -142,7 +142,7 @@ print(f"Network Mean Net Revenue: {network_mean:.4f}")
 print(f"Network Revenue Standard Deviation: {network_std:.4f}")
 print(f"Average Iterations to Stability: {avg_iterations:.2f}")
 
-# Optional: Visualize the distribution of network net revenue impact
+
 plt.figure(figsize=(8, 4))
 plt.hist(network_net_revenue, bins=50, alpha=0.7, color='skyblue')
 plt.xlabel("Net Revenue Impact")

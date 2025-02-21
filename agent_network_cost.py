@@ -1,18 +1,20 @@
 import pandas as pd
 import networkx as nx
 import matplotlib.pyplot as plt
-from scipy.special import expit  # Sigmoid function
+from scipy.special import expit 
 
-#weight factors for centrality measures
+# weight factors for centrality measures
 alpha, beta, gamma, epsilon = 0.35, 0.25, 0.25, 0.15  
-p = 0.7  # Priority error weight
+# priority error weight
+p = 0.7  
 
-# Data
+## source data files. More layers can be added and formulas updated 
+## i.e. security threats, resource depth and churn rates, deterministic up/down times etc.
 adjacency_csv = "adjacency_matrix.csv" 
 error_thresholds_csv = "error_policy.csv"
 cost_csv = "cost.csv"
 
-# Build graph
+# graph building
 adj_matrix = pd.read_csv(adjacency_csv, index_col=0)
 G = nx.from_pandas_adjacency(adj_matrix, create_using=nx.DiGraph())
 
@@ -58,7 +60,7 @@ raw_risk_scores = {
 }
 
 # optional Sigmoid transformation to Risk Score
-# if intuition is there might be something more nuanced to capture 
+# if intuition is there might be something more nuanced to capture, nonlinear etc.  
 transformed_risk_scores = {node: expit(raw_risk_scores[node]) for node in G.nodes()}
 
 # weighted error rates

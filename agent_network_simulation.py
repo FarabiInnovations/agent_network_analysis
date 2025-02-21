@@ -2,10 +2,11 @@ import pandas as pd
 import numpy as np
 import networkx as nx
 import matplotlib.pyplot as plt
-from scipy.special import expit  # Sigmoid function
+from scipy.special import expit  
+
 #weight factors for centrality measures
 alpha, beta, gamma, epsilon = 0.35, 0.25, 0.25, 0.15  
-p = 0.7  # Priority error weight
+p = 0.7  # priority error weight
 
 # Data
 adjacency_csv = "adjacency_matrix.csv" 
@@ -57,7 +58,7 @@ raw_risk_scores = {
     for node in G.nodes()
 }
 
-# optional Sigmoid Transformation to Risk Score
+# optional Sigmoid transformation to Risk Score
 # if intuition is there might be something more nuanced to capture 
 transformed_risk_scores = {node: expit(raw_risk_scores[node]) for node in G.nodes()}
 
@@ -68,30 +69,36 @@ weighted_error_rate = {
     for node in G.nodes()
 }
 
-# FinalRiskScore
+# FinalRiskScore. We can add more risk factors if needed something like e.g.
+# security_risk = { node: betweenness_centrality[node] * injection_surface[node] for node in G.nodes() }
+# final_risk_scores[node] += security_risk[node] * threat_intelligence[node]
+
+final_risk_scores[node] += security_risk[node] * threat_intelligence[node]
 final_risk_scores = {
     node: transformed_risk_scores[node] * weighted_error_rate[node]
     for node in G.nodes()
 }
 
-num_simulations = 10000  # Number of simulation runs
+num_simulations = 10000  # simulation runs
 nodes = list(final_risk_scores.keys())
 
-# Prepare a dictionary to store aggregated simulation results per node and overall network
+# dictionary to store aggregated simulation results per node and overall network
 simulation_results = {node: [] for node in nodes}
-network_net_revenue = []  # Will store net revenue per simulation across all nodes
+network_net_revenue = []  # store net revenue per simulation across all nodes
 
 for sim in range(num_simulations):
-    sim_net_revenue = 0  # Aggregate net revenue for this simulation run
+    sim_net_revenue = 0  # aggregate net revenue for this run
     for node in nodes:
-        # For each node, determine if an error occurs based on its risk probability.
+        # determine per node if an error occurs based on its risk probability.
         risk_prob = final_risk_scores[node]
-        error_occurred = np.random.rand() < risk_prob  # True if error occurs
+        error_occurred = np.random.rand() < risk_prob 
         
-        # Calculate revenue outcome:
-        # If error occurs, we get error_cost (which is negative)
-        # If no error, we get success_value.
-        # Then multiply by revenue_unit to scale it appropriately.
+        # calculate revenue outcome:
+        # if error occurs, we get an error_cost (which is negative)
+        # if no error, we get success_value.
+        # then multiply by revenue_unit to scale it appropriately.
+        # This can be any unit of value 'revenue' is the toy example, this could be
+        # time etc. any unit of value determined to be relevant to measure 
         if error_occurred:
             outcome = error_cost[node] * revenue_unit[node]
         else:
@@ -101,17 +108,17 @@ for sim in range(num_simulations):
         sim_net_revenue += outcome
     network_net_revenue.append(sim_net_revenue)
 
-# Convert results to DataFrame for analysis:
+
 sim_df = pd.DataFrame(simulation_results)
 sim_df['Network_Net_Revenue'] = network_net_revenue
 
-# Analyze simulation outcomes
+
 network_mean = np.mean(network_net_revenue)
 network_std = np.std(network_net_revenue)
 print(f"Network Mean Net Revenue: {network_mean:.4f}")
 print(f"Network Revenue Standard Deviation: {network_std:.4f}")
 
-# Optional: Visualize the distribution of network net revenue impact
+
 plt.figure(figsize=(8, 4))
 plt.hist(network_net_revenue, bins=50, alpha=0.7, color='skyblue')
 plt.xlabel("Net Revenue Impact")
