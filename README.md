@@ -1,4 +1,5 @@
-## Farabi Experiments Multi Agent Network Analysis 
+## Farabi Experiments
+### Multi Agent Network Analysis 
 
 The framework serves as a working baseline for multi-agent risk analysis, providing scaffolding for exploratory analyses. With further refinement, it can evolve into a hardened risk assessment tool. 
 
