@@ -42,8 +42,6 @@ table.auto_set_font_size(False)
 table.set_fontsize(10)
 table.scale(1.2, 1.2)  # Scale the table
 
-# Set title
+# plots
 plt.title("Network Centrality Metrics", fontsize=12, fontweight="bold")
-
-# Show the table
 plt.show()
