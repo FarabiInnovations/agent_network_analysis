@@ -39,7 +39,7 @@ class TemporalNetwork:
     def rolling_centrality(self, window_size=5):
         return [compute_centrality(slice) for slice in self.slices[-window_size:]]
 
-# different types of security risk factors with centrality measures
+# Security risk factors with centrality measures
 security_risk = {
     node: betweenness_centrality[node] * injection_surface[node]
     for node in G.nodes()
@@ -47,10 +47,10 @@ security_risk = {
 
 final_risk_scores[node] += security_risk[node] * threat_intelligence[node]
 
-# Some type of approximation for NP-hard loops
-// from sklearn.ensemble import RandomForestRegressor
+# Approximation for NP-hard loops
+from sklearn.ensemble import RandomForestRegressor
 
-// def approximate_risk(node):
+ def approximate_risk(node):
     model = RandomForestRegressor()
     model.fit(historical_centralities, historical_errors)
     return model.predict(current_state)
