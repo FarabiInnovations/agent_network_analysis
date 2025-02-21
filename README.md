@@ -24,4 +24,41 @@ Validation: Run some of the benchmarking against hybrid network topologies with 
 
 This open-source framework is released under the MIT License, and the code is available for further experimentation and refinement.
 
+## For weighted adjacency matrix
+1. Update CSV with desired weighted edges
+2. Add the weight='weight' parameter to the appropriate NetworkX centrality functions, 
+e.g. betweenness_centrality = nx.betweenness_centrality(G, weight='weight')
+
+### Improvement ideas ###
+
+## Temporal Network Extension, i.e. time-varying adjacency matrices
+class TemporalNetwork:
+    def __init__(self, time_slices):
+        self.slices = [nx.from_pandas_adjacency(df) for df in time_slices]
+        
+    def rolling_centrality(self, window_size=5):
+        return [compute_centrality(slice) for slice in self.slices[-window_size:]]
+
+# different types of security risk factors with centrality measures
+security_risk = {
+    node: betweenness_centrality[node] * injection_surface[node]
+    for node in G.nodes()
+}
+
+final_risk_scores[node] += security_risk[node] * threat_intelligence[node]
+
+# Some type of approximation for NP-hard loops
+// from sklearn.ensemble import RandomForestRegressor
+
+// def approximate_risk(node):
+    model = RandomForestRegressor()
+    model.fit(historical_centralities, historical_errors)
+    return model.predict(current_state)
+
+
+
+
+
+
+
 
