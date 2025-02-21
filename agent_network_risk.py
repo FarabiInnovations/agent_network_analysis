@@ -3,7 +3,7 @@ import networkx as nx
 import matplotlib.pyplot as plt
 
 # Weight factors for centrality measures (adjusted to sum to 1 in this case
-# Use intituition, evidence, or priors derived from literature to set weighting
+# Can use things like network intuition, evidence, or priors derived from literature to set weighting
 
 alpha, beta, gamma, epsilon = 0.35, 0.25, 0.25, 0.15  
 # Weights for priority error dominance. This wil be applied to the priority error
