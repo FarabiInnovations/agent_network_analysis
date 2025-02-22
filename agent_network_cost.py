@@ -9,7 +9,9 @@ alpha, beta, gamma, epsilon = 0.35, 0.25, 0.25, 0.15
 p = 0.7  
 
 ## source data files. More layers can be added and formulas updated 
-## i.e. security threats, resource depth and churn rates, deterministic up/down times etc.
+## i.e. security threats, resource depth and churn rates, 
+# deterministic uptime/downtime metrics with SLA thresholds etc.
+
 adjacency_csv = "adjacency_matrix.csv" 
 error_thresholds_csv = "error_policy.csv"
 cost_csv = "cost.csv"
