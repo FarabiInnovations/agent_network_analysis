@@ -1,3 +1,5 @@
+##### this test assumes node idenpendance ######
+
 import pandas as pd
 import numpy as np
 import networkx as nx
