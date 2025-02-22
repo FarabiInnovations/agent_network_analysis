@@ -24,8 +24,8 @@
 #  negates 3 successful units of value).   
    C = R * ErrorCost + (1−R) * SuccessValue 
 
-# Total Success Revenue where revenue unit is whatever dollar value 
-# given to a successful output. This could be an value unit (time saved etc.).
+# Total Success Revenue. Revenue unit is whatever dollar value 
+# assigned to a successful output. This could be assigned any desired value unit (time saved, opportunity cost etc.).
   Total Success Revenue (TS) = Final Success Rate * Success Value * Revenue Unit 
 # Total Error Loss = 
   Final Risk * Error Cost * Revenue Unit
