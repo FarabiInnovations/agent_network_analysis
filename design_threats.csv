@@ -1,0 +1,10 @@
+Design_ID, Design, Threat, Level
+D1, single-agent pattern, goal manipulation, 0.5
+D2, multi-agent pattern, communication channel attack:Identity attack, 0.5
+D3, unconstrained conversational autonomy, prompt injection:jailbreaking, 0.5
+D4, task-oriented pattern, denial of service:overload,0.5
+D5, hierarchical agent pattern, high-level agent compromise:taking control, 0.5
+D6, distributed agent ecosystem, sybil attack through agent impersonation, 0.5
+D7, human-in-the-loop, manipulation of human input:feedback to skew agent behavior, 0.5
+D8, self-learning and adaptive agents, data poisoning through backdoor trigger injection, 0.5
+    
