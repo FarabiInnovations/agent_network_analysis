@@ -44,16 +44,9 @@ class TemporalNetwork:
     def rolling_centrality(self, window_size=5):
         return [compute_centrality(slice) for slice in self.slices[-window_size:]]
 
-### Security risk factors with centrality measures
+### Agentic pattern threat levels with centrality measures (added)
  Ken Huang's analysis was used to define the original design_threats.csv file
  https://cloudsecurityalliance.org/blog/2025/02/06/agentic-ai-threat-modeling-framework-maestro#
-#### agentic pattern threat levels can be layered into the centrality at the node (agent) level
-security_risk = {
-    node: betweenness_centrality[node] * injection_surface[node]
-    for node in G.nodes()
-}
-
-final_risk_scores[node] += security_risk[node] * threat_intelligence[node]
 
 ### Approximation for NP-hard loops
 from sklearn.ensemble import RandomForestRegressor
