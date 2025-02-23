@@ -6,6 +6,8 @@ The framework serves as a working baseline for multi-agent risk analysis, provid
 #### Run any file with agent_network prefix 
 ```python3 agent_network_<whatever rest of filename>```
 
+#### definitions.txt has more details on specific risk components 
+
 #### Some strengths:
 
 Cross-Domain Risk Transferability --
