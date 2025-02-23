@@ -4,7 +4,7 @@
 The framework serves as a working baseline for multi-agent risk analysis, providing scaffolding for exploratory analyses. With further refinement, it can evolve into a hardened risk assessment tool. 
 
 #### Run any file with agent_network_ prefix 
-```python3 agent_network_<filename>
+```python3 agent_network_<filename>```
 
 #### Some strengths:
 
