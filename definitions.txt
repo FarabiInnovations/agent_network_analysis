@@ -42,6 +42,11 @@ Initial baseline based on Ken Haung's analysis, toy example threats were all jus
 More threat types can be added and threat levels adjusted based on best approximation of reality. 
 
 # Resource Threats
+These are turnover and resource availability risk additions. This adds the potential personel risk,
+i.e. if a few engineers are responsible for large critical networks, and they are unhappy or
+looking for other opportunities, or the company is restructuring, this can help reflect this
+non-mechanistic risk.
+
 Base calculation: 1 - (churn_rate^resources_availabile)
 
 Two approaches:
