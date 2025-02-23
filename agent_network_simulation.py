@@ -71,11 +71,10 @@ weighted_error_rate = {
     for node in G.nodes()
 }
 
-# FinalRiskScore. We can add more risk factors if needed something like e.g.
+# FinalRiskScore. We can add more risk factors if needed e.g.
 # security_risk = { node: betweenness_centrality[node] * injection_surface[node] for node in G.nodes() }
 # final_risk_scores[node] += security_risk[node] * threat_intelligence[node]
-
-final_risk_scores[node] += security_risk[node] * threat_intelligence[node]
+##
 final_risk_scores = {
     node: transformed_risk_scores[node] * weighted_error_rate[node]
     for node in G.nodes()
