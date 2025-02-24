@@ -29,6 +29,7 @@ error_df = pd.read_csv(error_thresholds_csv)
 type1_error = dict(zip(error_df["Node"], error_df["Type-1 Error"]))
 type2_error = dict(zip(error_df["Node"], error_df["Type-2 Error"]))
 priority = dict(zip(error_df["Node"], error_df["Priority"]))
+null_flag = dict(zip(error_df["Node"], error_df["null"]))
 
 # cost data
 cost_df = pd.read_csv(cost_csv)
@@ -65,9 +66,15 @@ raw_risk_scores = {
 transformed_risk_scores = {node: expit(raw_risk_scores[node]) for node in G.nodes()}
 
 # Weighted error rates based on error policy
+# If the error policy null flag = 1, that indicates that this is not a node with a
+# distribution of outcomes (transformer output), and will ignore any type-1 
+# type-2 error risk. All other risk metrics will apply.
 weighted_error_rate = {
-    node: (p * type1_error[node] + (1 - p) * type2_error[node]) if priority[node] == 1 else
-          (p * type2_error[node] + (1 - p) * type1_error[node])
+    node: 0.0001 if null_flag[node] == 1 else (
+        (p * type1_error[node] + (1 - p) * type2_error[node])
+        if priority[node] == 1 else
+        (p * type2_error[node] + (1 - p) * type1_error[node])
+    )
     for node in G.nodes()
 }
 
@@ -133,6 +140,7 @@ for node in G.nodes():
     resource_multiplier = 1.0
     uptime_multiplier = 1.0
     resource_additive_term = 0.0
+
     
     if node in node_threat_map:
         mapping = node_threat_map[node]

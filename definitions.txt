@@ -33,6 +33,9 @@
   Total Success Revenue + Total Error Loss
 
 # Error Policy
+The null value set to 1 will ignore the error policy and behave as a classic system output,
+with all other risk metrics still applying, i.e. this would be a node that is not producing transformer
+output. This could be any non-LLM system component, (event bridge etc.).
 
 # Cost
 
