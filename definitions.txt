@@ -33,16 +33,16 @@
   Total Success Revenue + Total Error Loss
 
 # Error Policy
-The null value set to 1 will ignore the error policy for that node and behave as a classic system output,
-with all other risk metrics still applying to the node, i.e. this would be a node that is not producing transformer
-output. This could be any non-LLM system component, (event bridge etc.).
+ The null value set to 1 will ignore the error policy for that node and behave as a classic system output,
+ with all other risk metrics still applying to the node, i.e. this would be a node that is not producing transformer
+ output. This could be any non-LLM system component, (event bridge etc.).
 
 # Cost
 
 # Design Threats
 
-Initial baseline based on Ken Haung's analysis, toy example threats were all just to set 0.5. 
-More threat types can be added and threat levels adjusted based on best approximation of reality. 
+ Initial baseline based on Ken Haung's analysis, toy example threats were all just to set 0.5. 
+ More threat types can be added and threat levels adjusted based on best approximation of reality. 
 
 # Resource Threats
 These are turnover and resource availability risk additions. This adds the potential personel risk,
