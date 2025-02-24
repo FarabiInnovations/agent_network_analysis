@@ -5,6 +5,8 @@ The framework serves as a working baseline for multi-agent risk analysis, provid
 
 #### Run any file with agent_network prefix 
 ```python3 agent_network_<whatever rest of filename>```
+#### This file contains all the threat files in the MC sim
+```python3 agent_network_simulation_contagion_with_all_threats.py``` 
 
 #### definitions.txt has more details on specific risk components 
 
