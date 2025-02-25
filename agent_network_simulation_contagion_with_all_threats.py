@@ -149,7 +149,8 @@ for node in G.nodes():
         resource_threat_id = mapping['resource_threat_ID']
         sla_id = mapping['SLA_ID']
         
-        # Pattern threat multiplier (multiplicative approach)
+        # Agentic Design Pattern threat multiplier (this could be any design threat
+        # does not necessarily need to be Agentic Patterns)
         if design_id in pattern_threats:
             level = pattern_threats[design_id]
             
