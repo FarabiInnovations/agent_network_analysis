@@ -164,7 +164,7 @@ for node in G.nodes():
             # Multiplicative approach:
             # using churn_rate^(resources_available/scaling factor) gives the probability that ALL resources fail
             # a lower value indicates better coverage and thus lower risk.
-            scaling_factor = 10  # adjust this value as needed
+            scaling_factor = 10  # adjust as needed
             resource_multiplier = churn_rate ** (resources_available / scaling_factor)
             
             # Optional additive approach (this needs some adjusting)

@@ -55,12 +55,12 @@ non-mechanistic risk.
               resources dampen the overall risk relative to the baseline vulnerabilities. 
               Here, using churn_rate^resources_available gives the probability that ALL resources fail
               a lower value indicates better coverage and thus lower risk.
-              resource_multiplier = churn_rate ** resources_available
+              resource_multiplier = churn_rate ** (resources_available/scaling_factor)
             
             Optional additive approach (this needs some adjusting):
               In this case if the analysis requires capturing two distinct sources of risk. 
               One inherent to the node (baseline) along with another coming from insufficient maintenance (churn).
-              Survival probability is 1 - (churn_rate^resources_available)
+              Survival probability is 1 - (churn_rate^resources_available/scaling_factor)
 
 # SLA Policy
 
