@@ -187,10 +187,13 @@ for node in G.nodes():
         adjusted_final_risk[node] = (base * pattern_multiplier * uptime_multiplier) + resource_additive_term
     else:
         # multiplicative approach
-        print("base", base)
-        print("pattern", pattern_multiplier)
-        print("resource", resource_multiplier)
-        print("uptime", uptime_multiplier)
+        print("****NODE START****")
+        print("NODE KEY: ", node )
+        print("Centrality Risk and Error Policy", base)
+        print("Design Pattern Threats", pattern_multiplier)
+        print("Resource and Churn Risk", resource_multiplier)
+        print("SLA Uptime Risk", uptime_multiplier)
+        print("***NODE END***")
         adjusted_final_risk[node] = base * pattern_multiplier * resource_multiplier * uptime_multiplier
 
 # 'adjusted_final_risk' is the risk probability for each node after
@@ -253,8 +256,11 @@ sim_df['Network_Net_Revenue'] = network_net_revenue
 
 network_mean = np.mean(network_net_revenue)
 network_std = np.std(network_net_revenue)
+
+print("*****ENTERPRISE RESOURCES*****")
 print(f"Network Mean Net Revenue: {network_mean:.4f}")
 print(f"Network Revenue Standard Deviation: {network_std:.4f}")
+print("******************************")
 
 plt.figure(figsize=(8, 4))
 plt.hist(network_net_revenue, bins=50, alpha=0.7, color='skyblue')
