@@ -70,7 +70,7 @@ transformed_risk_scores = {node: expit(raw_risk_scores[node]) for node in G.node
 # distribution of outcomes (transformer output), and will ignore any type-1 
 # type-2 error risk. All other risk metrics will apply.
 weighted_error_rate = {
-    node: 0.0001 if null_flag[node] == 1 else (
+    node: 0.009 if null_flag[node] == 1 else (
         (p * type1_error[node] + (1 - p) * type2_error[node])
         if priority[node] == 1 else
         (p * type2_error[node] + (1 - p) * type1_error[node])
@@ -80,7 +80,8 @@ weighted_error_rate = {
 
 # Baseline final risk score from centrality and error policies
 final_risk_scores = {
-    node: transformed_risk_scores[node] * weighted_error_rate[node]
+     node: transformed_risk_scores[node] if weighted_error_rate[node] == 99 
+          else transformed_risk_scores[node] * weighted_error_rate[node]
     for node in G.nodes()
 }
 
@@ -161,14 +162,15 @@ for node in G.nodes():
             churn_rate = res_data['churn_rate']
             
             # Multiplicative approach:
-            # Here, using churn_rate^resources_available gives the probability that ALL resources fail
+            # using churn_rate^(resources_available/scaling factor) gives the probability that ALL resources fail
             # a lower value indicates better coverage and thus lower risk.
-            resource_multiplier = churn_rate ** resources_available
+            scaling_factor = 10  # adjust this value as needed
+            resource_multiplier = churn_rate ** (resources_available / scaling_factor)
             
             # Optional additive approach (this needs some adjusting)
-            # Survival probability is 1 - (churn_rate^resources_available)
+            # Survival probability is 1 - (resources_available/scaling factor)
             if use_resource_additive:
-                resource_additive_term = 1 - (churn_rate ** resources_available)
+                resource_multiplier = churn_rate ** (resources_available / scaling_factor)
 
         if sla_id in SLA_threats:
             res_data = SLA_threats[sla_id]
@@ -184,6 +186,10 @@ for node in G.nodes():
         adjusted_final_risk[node] = (base * pattern_multiplier * uptime_multiplier) + resource_additive_term
     else:
         # multiplicative approach
+        print("base", base)
+        print("pattern", pattern_multiplier)
+        print("resource", resource_multiplier)
+        print("uptime", uptime_multiplier)
         adjusted_final_risk[node] = base * pattern_multiplier * resource_multiplier * uptime_multiplier
 
 # 'adjusted_final_risk' is the risk probability for each node after

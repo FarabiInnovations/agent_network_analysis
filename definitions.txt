@@ -67,3 +67,12 @@ non-mechanistic risk.
   SLA uptime with actual uptime
   uptime_risk = (sla_uptime - actual_uptime) / sla_uptime
               uptime_multiplier = 1 + (uptime_risk)
+
+# Notes
+  Deterministic classic systems functionality can be compared against probabilistic nodes (transformers)
+  where the stability of the classic node is compared against a less stable but possibily more value added
+  transformer output.
+
+  Will test implementing indicator functions for usesful/not useful output based on error policy thresholds.
+  This gives us a simple Bernouli distribution where p = useful output/all output (per node, per system etc.). 
+  From there p(1-p) is our variance and calculattions are straitforward, i.e. Fisher information etc.                    
