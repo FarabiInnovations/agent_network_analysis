@@ -336,34 +336,33 @@ plt.show()
 #   Risk Data Table   #
 # ------------------- #
 
-# Create a DataFrame from the risk details dictionary.
+
 risk_df = pd.DataFrame.from_dict(risk_details, orient='index')
 risk_df.index.name = 'node'
 risk_df.reset_index(inplace=True)
 
-# Create a new figure and axes.
+
 fig, ax = plt.subplots(figsize=(12, 8))
 ax.axis('tight')
 ax.axis('off')
 
-# Create the table. The DataFrame's values and columns are used to fill in the cells.
+
 table = ax.table(cellText=risk_df.values,
                  colLabels=risk_df.columns,
                  cellLoc='center',
                  loc='center')
 
-# Enable text wrapping on each cell using get_celld()
+
 for key, cell in table.get_celld().items():
     try:
         cell.get_text().set_wrap(True)
-        cell.set_fontsize(10)  # Adjust as needed
+        cell.set_fontsize(10) 
     except Exception as e:
         print(f"Warning: could not wrap text in cell {key}: {e}")
 
 table.scale(1.1, 2)
 
 
-# Optionally, set a title.
 plt.title("Risk Details Table", fontsize=16)
 plt.show()
 
