@@ -66,7 +66,7 @@ raw_risk_scores = {
 transformed_risk_scores = {node: expit(raw_risk_scores[node]) for node in G.nodes()}
 
 # Weighted error rates based on error policy
-# If the error policy null flag = 1, that indicates that this is not a node with a
+# If the error policy ignore flag = 1, that indicates that this is not a node with a
 # distribution of outcomes (transformer output), and will ignore any type-1 
 # type-2 error risk. All other risk metrics will apply.
 weighted_error_rate = {
