@@ -219,7 +219,7 @@ for node in G.nodes():
          'uptime_multiplier': round(uptime_multiplier, 4),
          'adjusted_risk': round(adjusted_final_risk[node], 4),
          'Design_Name': design_name,
-         'Threat_Name': design_threat
+         'Threat_Name': threat_name
        }
 
 # 'adjusted_final_risk' is the risk probability for each node after
