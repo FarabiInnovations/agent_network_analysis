@@ -45,7 +45,7 @@
  Initial baseline based on Ken Haung's analysis, toy example threats were all just to set 0.5. 
  More threat types can be added and threat levels adjusted based on best approximation of reality. 
 
-# Resource Threats
+# Resource Threats - Towers Of Knowlege, Churn, Depth
 These are turnover and resource availability risk additions. This adds the potential personnel risk,
 i.e. if a few engineers are responsible for large critical networks, and they are unhappy or
 looking for other opportunities, or the company is restructuring, or this is a generally high churn rate 
