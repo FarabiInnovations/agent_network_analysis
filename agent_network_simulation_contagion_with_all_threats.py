@@ -29,7 +29,7 @@ error_df = pd.read_csv(error_thresholds_csv)
 type1_error = dict(zip(error_df["Node"], error_df["Type-1 Error"]))
 type2_error = dict(zip(error_df["Node"], error_df["Type-2 Error"]))
 priority = dict(zip(error_df["Node"], error_df["Priority"]))
-null_flag = dict(zip(error_df["Node"], error_df["null"]))
+null_flag = dict(zip(error_df["Node"], error_df["Ignore"]))
 
 # cost data
 cost_df = pd.read_csv(cost_csv)

@@ -4,8 +4,8 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 #  adjacency matrix
-csv_file = "adjacency_matrix.csv"  # Adjust with actual filename
-adj_matrix = pd.read_csv(csv_file, index_col=0)  # Set first column as row index
+csv_file = "adjacency_matrix.csv" # can use directed, undirected, weighted, mixed graph 
+adj_matrix = pd.read_csv(csv_file, index_col=0) 
 
 # grapsh build
 G = nx.from_pandas_adjacency(adj_matrix, create_using=nx.DiGraph())
