@@ -46,10 +46,10 @@
  More threat types can be added and threat levels adjusted based on best approximation of reality. 
 
 # Resource Threats
-These are turnover and resource availability risk additions. This adds the potential personel risk,
+These are turnover and resource availability risk additions. This adds the potential personnel risk,
 i.e. if a few engineers are responsible for large critical networks, and they are unhappy or
-looking for other opportunities, or the company is restructuring, this can help reflect this
-non-mechanistic risk.
+looking for other opportunities, or the company is restructuring, or this is a generally high churn rate 
+associated with the companry, dept or team, this can help reflect this non-mechanistic risk.
 
             Multiplicative approach:
               Multiplicative: approach when interested in showing that increasing 
