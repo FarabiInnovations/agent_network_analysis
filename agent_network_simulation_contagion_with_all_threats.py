@@ -168,7 +168,7 @@ for node in G.nodes():
 
             details = pattern_details[design_id]
             design_name = details['Design']
-            design_threat = details['Threat']
+            threat_name = details['Threat']
             level = pattern_threats[design_id]
             
             pattern_multiplier = 1 + level
