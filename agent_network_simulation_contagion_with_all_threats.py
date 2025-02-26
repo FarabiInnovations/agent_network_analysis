@@ -117,6 +117,16 @@ resource_threats = {
 # Pattern threats dictionary (Level is the threat magnitude)
 pattern_threats = {row['Design_ID']: row['Level'] for _, row in pattern_threats_df.iterrows()}
 
+# Storing Agent Design Patterns for qualtitative analysis
+pattern_details = {
+    row['Design_ID'].strip(): {
+        'Design': row['Design'].strip(),
+        'Threat': row['Threat'].strip(),
+        'Level': row['Level']
+    }
+    for _, row in pattern_threats_df.iterrows()
+}
+
 # This is the node threat mapping. This maps a node to its threat IDs
 node_threat_map = {
     row['node']: {'design_ID': row['design_ID'], 'resource_threat_ID': row['resource_threat_ID'],
@@ -133,6 +143,7 @@ use_resource_additive = False
 # (churn_rate^resources_available)
 # SLA incorporates the SLA and actual uptime metrics
 adjusted_final_risk = {}
+risk_details = {}
 for node in G.nodes():
     base = final_risk_scores[node]
     
@@ -141,6 +152,8 @@ for node in G.nodes():
     resource_multiplier = 1.0
     uptime_multiplier = 1.0
     resource_additive_term = 0.0
+    design_name = "n/a"
+    threat_name = "n/a"
 
     
     if node in node_threat_map:
@@ -152,6 +165,10 @@ for node in G.nodes():
         # Agentic Design Pattern threat multiplier (this could be any design threat
         # does not necessarily need to be Agentic Patterns)
         if design_id in pattern_threats:
+
+            details = pattern_details[design_id]
+            design_name = details['Design']
+            design_threat = details['Threat']
             level = pattern_threats[design_id]
             
             pattern_multiplier = 1 + level
@@ -183,7 +200,7 @@ for node in G.nodes():
               uptime_multiplier = 1 + (uptime_risk)
                 
     if use_resource_additive:
-        # additive
+        # ** additive option, but not using and may remove this ** #
         adjusted_final_risk[node] = (base * pattern_multiplier * uptime_multiplier) + resource_additive_term
     else:
         # multiplicative approach
@@ -195,6 +212,15 @@ for node in G.nodes():
         print("SLA Uptime Risk", uptime_multiplier)
         print("***NODE END***")
         adjusted_final_risk[node] = base * pattern_multiplier * resource_multiplier * uptime_multiplier
+        risk_details[node] = {
+         'base_risk': round(base, 4),
+         'pattern_multiplier': round(pattern_multiplier, 4),
+         'resource_multiplier': round(resource_multiplier, 4),
+         'uptime_multiplier': round(uptime_multiplier, 4),
+         'adjusted_risk': round(adjusted_final_risk[node], 4),
+         'Design_Name': design_name,
+         'Threat_Name': design_threat
+       }
 
 # 'adjusted_final_risk' is the risk probability for each node after
 # incorporating centrality, error policies,
@@ -268,3 +294,76 @@ plt.xlabel("Net Revenue Impact")
 plt.ylabel("Frequency")
 plt.title("Distribution of Network Net Revenue Impact (Monte Carlo Simulation with Contagion)")
 plt.show()
+
+
+# -------------------------------- #
+# Network Visual with Risk Gradient
+# ---------------------------------#
+
+# Normalize the adjusted risk scores to [0,1]
+risk_values = np.array(list(adjusted_final_risk.values()))
+min_risk = risk_values.min()
+max_risk = risk_values.max()
+
+norm_risk = {
+    node: (adjusted_final_risk[node] - min_risk) / (max_risk - min_risk)
+    if max_risk > min_risk else 0
+    for node in adjusted_final_risk
+}
+
+# Use plt.get_cmap if you're already using plt
+cmap = plt.get_cmap('viridis')
+
+
+# Create a figure and axes explicitly.
+fig, ax = plt.subplots(figsize=(12, 8))
+
+# Draw the network on the specified Axes.
+nx.draw(G, ax=ax, with_labels=True,
+        node_color=[norm_risk[node] for node in G.nodes()],
+        cmap=cmap, font_weight='bold')
+
+# Create a ScalarMappable for the colorbar using the same colormap and normalization.
+sm = plt.cm.ScalarMappable(cmap=cmap, norm=plt.Normalize(vmin=min_risk, vmax=max_risk))
+sm.set_array([])  # set_array can be empty; it's just for the colorbar mapping
+
+# Add the colorbar to the figure, specifying the Axes to attach to.
+fig.colorbar(sm, ax=ax, label='Normalized Network Risk')
+ax.set_title("Network Visualization with Adjusted Risk Score Gradient")
+plt.show()
+
+# ------------------- #
+#   Risk Data Table   #
+# ------------------- #
+
+# Create a DataFrame from the risk details dictionary.
+risk_df = pd.DataFrame.from_dict(risk_details, orient='index')
+risk_df.index.name = 'node'
+risk_df.reset_index(inplace=True)
+
+# Create a new figure and axes.
+fig, ax = plt.subplots(figsize=(12, 8))
+ax.axis('tight')
+ax.axis('off')
+
+# Create the table. The DataFrame's values and columns are used to fill in the cells.
+table = ax.table(cellText=risk_df.values,
+                 colLabels=risk_df.columns,
+                 cellLoc='center',
+                 loc='center')
+
+# Enable text wrapping on each cell using get_celld()
+for key, cell in table.get_celld().items():
+    try:
+        cell.get_text().set_wrap(True)
+        cell.set_fontsize(10)  # Adjust as needed
+    except Exception as e:
+        print(f"Warning: could not wrap text in cell {key}: {e}")
+
+table.scale(1.1, 2)
+
+
+# Optionally, set a title.
+plt.title("Risk Details Table", fontsize=16)
+plt.show()
+
