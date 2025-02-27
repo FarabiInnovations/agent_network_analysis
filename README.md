@@ -1,7 +1,31 @@
 ## Farabi Experiments
 ### Multi Agent Network Analysis 
 
-The framework serves as a working baseline for multi-agent risk analysis, providing scaffolding for exploratory analyses. With further refinement, it can evolve into a hardened risk assessment tool. 
+This project is a framework for analyzing and simulating risks in a network of interconnected agents (nodes). Here's a simplified explanation of what it does:
+
+Data Input: The project reads various data files that describe the network structure (adjacency matrix), error policies, costs, and additional risk factors like resource threats and SLA (Service Level Agreement) uptimes.
+
+Network Construction: It builds a directed graph (network) using the adjacency matrix, where nodes represent agents and edges represent connections between them.
+
+Centrality Measures: It calculates centrality measures (degree, betweenness, eigenvector, and closeness) for each node to understand their importance in the network.
+
+Risk Calculation:
+
+It computes a raw risk score for each node based on the centrality measures.
+It adjusts these scores using error policies and additional risk factors like resource availability, design threats, and SLA compliance.
+Simulation:
+
+It runs a Monte Carlo simulation to model how risks propagate through the network over multiple rounds.
+It simulates failures and their impact on the network's overall revenue.
+Visualization:
+
+It visualizes the network with nodes colored based on their risk levels.
+It generates a histogram showing the distribution of network net revenue impacts from the simulation.
+Reporting:
+
+It prints detailed risk information for each node.
+It displays a table summarizing the risk details.
+In essence, the project helps to identify and quantify risks in a network of agents, simulate their potential impacts, and visualize the results for better understanding and decision-making.
 
 #### Run any file with agent_network prefix 
 ```python3 agent_network_<whatever rest of filename>```
