@@ -26,8 +26,9 @@ Default is a mixed graph (direct and undirected edges)
 
 #### Final Risk
 
-  (p is the priority weight of the error type, which in this example
-  will be either type-1 or type-2)
+  p = the priority weight of the error type, which in this example
+  will be either type-1 or type-2
+  
   FR = R * (p * PriorityError + (1-p) * NonPriorityError)
 
 #### Cost (Loss) (cost.csv) 
