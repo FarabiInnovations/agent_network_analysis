@@ -8,7 +8,9 @@ The framework serves as a working baseline for multi-agent risk analysis, provid
 #### This file contains all the threat files in the MC contagion sim
 ```python3 agent_network_simulation_contagion_with_all_threats.py``` 
 
-#### definitions.md has more details on specific risk components 
+#### has more details on specific risk components 
+
+definitions.md 
 
 #### Some strengths:
 
