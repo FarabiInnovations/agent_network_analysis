@@ -38,9 +38,12 @@
  with all other risk metrics still applying to the node, i.e. this would be a node that is not producing transformer
  output. This could be any non-LLM system component, (event bridge etc.).
 
-# Cost
+# Cost (Loss)
+ 
+ This refers to the economic impact of the system, which is measured in units of value, where value can
+ be any resource desired, (revenue, time saved, opportunity cost and so on). This would be the unit of value on success, and the destruction of value units on error, times the resource value per unit.    
 
-# Design Threats
+# Design Pattern Threats (Agentic or otherwise)
 
  Initial baseline based on Ken Haung's analysis, toy example threats were all just to set 0.5. 
  More threat types can be added and threat levels adjusted based on best approximation of reality. 
@@ -63,7 +66,7 @@ associated with the companry, dept or team, this can help reflect this non-mecha
               One inherent to the node (baseline) along with another coming from insufficient maintenance (churn).
               Survival probability is 1 - (churn_rate^resources_available/scaling_factor)
 
-# SLA Policy
+# SLA Policy (Service Level Agreement)
 
   SLA uptime with actual uptime
   uptime_risk = (sla_uptime - actual_uptime) / sla_uptime
