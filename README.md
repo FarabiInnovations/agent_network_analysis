@@ -55,7 +55,8 @@ Example weighted adjacency matrix: network_centrality > agent_network_weighted_c
 This baseline uses a mixed graph of both directed and undirected edges, information can flow in one direction
 or bi-directionally. If a model desires that every connection is assumed bi-directional, then this method can be applied:
 
-G = nx.from_pandas_adjacency(adj_matrix, create_using=nx.DiGraph())
+G = nx.from_pandas_adjacency(adj_matrix, create_using=nx.DiGraph())\
+
 G = G.to_undirected() 
 
 ## Improvement ideas ##
@@ -71,7 +72,7 @@ class TemporalNetwork:
 
 ### Agentic pattern threat levels with centrality measures (added)
  Ken Huang's analysis was used to define the original design_threats.csv file
- 
+
  [Ken Huang's analysis](https://cloudsecurityalliance.org/blog/2025/02/06/agentic-ai-threat-modeling-framework-maestro#)
 
 
