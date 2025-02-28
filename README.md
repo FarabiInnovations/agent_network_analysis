@@ -49,8 +49,8 @@ that edges with high fallback traffic are more preferred paths.
 
 ##### Transform the 'weight' attribute into a 'distance' attribute.
 for u, v, data in G.edges(data=True):
-    fallback_weight = data.get('weight', 1)
-     #####Using inverse transformation:
+    fallback_weight = data.get('weight', 1)\
+     #####Using inverse transformation:\
      data['distance'] = 1 / fallback_weight if fallback_weight > 0 else float('inf')
     
     ##### optional log transform
