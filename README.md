@@ -44,8 +44,8 @@ have a mutual connection, such that if node A were to have a disruption in proce
 some % of As traffic might be diverted to B (and vice versa), in a tightly coupled pattern. The amount of traffic diverted would then be the weighted edge, i.e. if the weight were 0.2 from A to B, that might indicate 20% of As traffic gets diverted to B when A has problems etc. 
 
 1. Update CSV with desired weighted edges
-2. Add the weight='weight' parameter to the appropriate NetworkX centrality functions\ 
-e.g.\ 
+2. Add the weight='weight' parameter to the appropriate NetworkX centrality functions
+\
                 degree_centrality = nx.degree_centrality(G) # no weight\
                 betweenness_centrality = nx.betweenness_centrality(G,weight='weight')\
                 eigenvector_centrality = nx.eigenvector_centrality(G,weight='weight')\
