@@ -311,23 +311,19 @@ norm_risk = {
     for node in adjusted_final_risk
 }
 
-# Use plt.get_cmap if you're already using plt
+
 cmap = plt.get_cmap('viridis')
-
-
-# Create a figure and axes explicitly.
 fig, ax = plt.subplots(figsize=(12, 8))
 
-# Draw the network on the specified Axes.
+# Draw network 
 nx.draw(G, ax=ax, with_labels=True,
         node_color=[norm_risk[node] for node in G.nodes()],
         cmap=cmap, font_weight='bold')
 
-# Create a ScalarMappable for the colorbar using the same colormap and normalization.
 sm = plt.cm.ScalarMappable(cmap=cmap, norm=plt.Normalize(vmin=min_risk, vmax=max_risk))
-sm.set_array([])  # set_array can be empty; it's just for the colorbar mapping
+sm.set_array([])  
 
-# Add the colorbar to the figure, specifying the Axes to attach to.
+
 fig.colorbar(sm, ax=ax, label='Normalized Network Risk')
 ax.set_title("Network Visualization with Adjusted Risk Score Gradient")
 plt.show()
