@@ -4,13 +4,13 @@
 The framework serves as a working baseline for multi-agent risk analysis, providing scaffolding for exploratory analyses. 
 
 #### Run any file with agent_network prefix 
-```python3 agent_network_<whatever rest of filename>```
+```python3 agent_network_<filename>```
 #### This file contains all the threat files in the MC contagion sim
 ```python3 agent_network_simulation_contagion_with_all_threats.py``` 
 
 #### More details on risk components 
 
-definitions.md 
+[definitions.md](./definitions.md)
 
 #### Some strengths:
 
@@ -56,7 +56,7 @@ This baseline uses a mixed graph of both directed and undirected edges, informat
 or bi-directionally. If a model desires that every connection is assumed bi-directional, then this method can be applied:
 
 G = nx.from_pandas_adjacency(adj_matrix, create_using=nx.DiGraph())
-G.to_undirected() 
+G = G.to_undirected() 
 
 ## Improvement ideas ##
 
@@ -71,7 +71,9 @@ class TemporalNetwork:
 
 ### Agentic pattern threat levels with centrality measures (added)
  Ken Huang's analysis was used to define the original design_threats.csv file
- https://cloudsecurityalliance.org/blog/2025/02/06/agentic-ai-threat-modeling-framework-maestro#
+ 
+ [Ken Huang's analysis](https://cloudsecurityalliance.org/blog/2025/02/06/agentic-ai-threat-modeling-framework-maestro#)
+
 
 ### Approximation for NP-hard loops
 from sklearn.ensemble import RandomForestRegressor
