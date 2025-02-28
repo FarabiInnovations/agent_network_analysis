@@ -61,7 +61,7 @@ G = G.to_undirected()
 
 ### Improvement ideas ###
 
-### Temporal Network Extension, i.e. time-varying adjacency matrices
+#### Temporal Network Extension, i.e. time-varying adjacency matrices
 something like;\
 class TemporalNetwork:
     def __init__(self, time_slices):
@@ -70,13 +70,13 @@ class TemporalNetwork:
     def rolling_centrality(self, window_size=5):
         return [compute_centrality(slice) for slice in self.slices[-window_size:]]
 
-### Agentic pattern threat levels with centrality measures (added)
+#### Agentic pattern threat levels with centrality measures (added)
  Ken Huang's analysis was used to define the original design_threats.csv file
 
  [Ken Huang's analysis](https://cloudsecurityalliance.org/blog/2025/02/06/agentic-ai-threat-modeling-framework-maestro#)
 
 
-### Approximation for NP-hard loops
+#### Approximation for NP-hard loops
 from sklearn.ensemble import RandomForestRegressor
 
  def approximate_risk(node):
