@@ -3,7 +3,7 @@ import networkx as nx
 import matplotlib.pyplot as plt
 
 # Any adjacency matrix, if weighted edges check README for potential networkx changes. 
-csv_file = "adjacency_matrix.csv"  
+csv_file = "weighted_adjacency_matrix.csv"  
 adj_matrix = pd.read_csv(csv_file, index_col=0)
 
 # convert the dataframe 
@@ -11,9 +11,9 @@ G = nx.from_pandas_adjacency(adj_matrix, create_using=nx.DiGraph())
 
 # centrality measures
 degree_centrality = nx.degree_centrality(G)
-betweenness_centrality = nx.betweenness_centrality(G)
-eigenvector_centrality = nx.eigenvector_centrality(G)
-closeness_centrality = nx.closeness_centrality(G)
+betweenness_centrality = nx.betweenness_centrality(G,weight='weight')
+eigenvector_centrality = nx.eigenvector_centrality(G,weight='weight')
+closeness_centrality = nx.closeness_centrality(G,distance='weight')
 
 
 centrality_metrics_df = pd.DataFrame({

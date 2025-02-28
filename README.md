@@ -5,7 +5,7 @@ The framework serves as a working baseline for multi-agent risk analysis, provid
 
 #### Run any file with agent_network prefix 
 ```python3 agent_network_<whatever rest of filename>```
-#### This file contains all the threat files in the MC sim
+#### This file contains all the threat files in the MC contagion sim
 ```python3 agent_network_simulation_contagion_with_all_threats.py``` 
 
 #### definitions.md has more details on specific risk components 
@@ -33,9 +33,23 @@ Validation: Run some of the benchmarking against hybrid network topologies with 
 
 
 ### For weighted adjacency matrix
+
+A weighted adjacency matrix shows the strength or intensity of the connection. For traffic flow, each entry can represent the proportion of traffic that moves between nodes, or how likely a node is to serve as a fallback if the primary route isn’t available. 
+
+Each node might show a self-connection value of 1.0. This could be interpreted as the baseline 
+traffic that stays at the node (or a normalization factor). Basically that the majority of traffic remains at its origin unless rerouted. 
+
+Off diagonal values, in the case of A and B example, they might 
+have a mutual connection, such that if node A were to have a disruption in processing its own traffic, 
+some % of As traffic might be diverted to B (and vice versa), in a tightly coupled pattern. The amount of traffic diverted would then be the weighted edge, i.e. if the weight were 0.2 from A to B, that might indicate 20% of As traffic gets diverted to B when A has problems etc. 
+
 1. Update CSV with desired weighted edges
 2. Add the weight='weight' parameter to the appropriate NetworkX centrality functions, 
-e.g. betweenness_centrality = nx.betweenness_centrality(G, weight='weight')
+e.g. 
+degree_centrality = nx.degree_centrality(G) # no weight
+betweenness_centrality = nx.betweenness_centrality(G,weight='weight')
+eigenvector_centrality = nx.eigenvector_centrality(G,weight='weight')
+closeness_centrality = nx.closeness_centrality(G,distance='weight')
 
 ## Improvement ideas ##
 
