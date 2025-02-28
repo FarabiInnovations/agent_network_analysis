@@ -46,10 +46,10 @@ some % of As traffic might be diverted to B (and vice versa), in a tightly coupl
 1. Update CSV with desired weighted edges
 2. Add the weight='weight' parameter to the appropriate NetworkX centrality functions, 
 e.g. 
-                degree_centrality = nx.degree_centrality(G) # no weight
-                betweenness_centrality = nx.betweenness_centrality(G,weight='weight')
-                eigenvector_centrality = nx.eigenvector_centrality(G,weight='weight')
-                closeness_centrality = nx.closeness_centrality(G,distance='weight')
+                degree_centrality = nx.degree_centrality(G) # no weight\
+                betweenness_centrality = nx.betweenness_centrality(G,weight='weight')\
+                eigenvector_centrality = nx.eigenvector_centrality(G,weight='weight')\
+                closeness_centrality = nx.closeness_centrality(G,distance='weight')\
 
 ## Improvement ideas ##
 
