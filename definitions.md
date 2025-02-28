@@ -37,7 +37,8 @@ Default is a mixed graph (direct and undirected edges)
   be any resource desired, (revenue, time saved, opportunity cost and so on). This would be the unit of value on success, and the destruction of value units on error, times the resource value per unit. 
   
   Where success = 1 (i.e. produces one unit of value), and an error is a negative value, 
-  (e.g. -3 would mean an error negates 3 successful units of value).   
+  (e.g. -3 would mean an error negates 3 successful units of value). 
+    
   C = R * ErrorCost + (1−R) * SuccessValue 
 
 #### Total Success Revenue
