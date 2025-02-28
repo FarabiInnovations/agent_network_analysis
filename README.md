@@ -70,6 +70,7 @@ for u, v, data in G.edges(data=True):
 ## Improvement ideas ##
 
 ### Temporal Network Extension, i.e. time-varying adjacency matrices
+something like;\
 class TemporalNetwork:
     def __init__(self, time_slices):
         self.slices = [nx.from_pandas_adjacency(df) for df in time_slices]
