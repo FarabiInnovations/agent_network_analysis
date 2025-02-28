@@ -51,6 +51,13 @@ that edges with high fallback traffic are more preferred paths.
 
 Example weighted adjacency matrix: network_centrality > agent_network_weighted_centrality.py
 
+## undirected vs directed ##
+This baseline uses a mixed graph of both directed and undirected edges, information can flow in one direction
+or bi-directionally. If a model desires that every connection is assumed bi-directional, then this method can be applied:/
+
+G = nx.from_pandas_adjacency(adj_matrix, create_using=nx.DiGraph())
+G.to_undirected() 
+
 ## Improvement ideas ##
 
 ### Temporal Network Extension, i.e. time-varying adjacency matrices
