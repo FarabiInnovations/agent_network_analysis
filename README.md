@@ -49,25 +49,7 @@ A high fallback percentage after transformation, becomes a low distance. This
 should make that edge more attractive for shortest path routing. This is the idea 
 that edges with high fallback traffic are more preferred paths.
 
-##### Transform the 'weight' attribute into a 'distance' attribute.
-for u, v, data in G.edges(data=True):
-    fallback_weight = data.get('weight', 1)\
-     #####Using inverse transformation:\
-     data['distance'] = 1 / fallback_weight if fallback_weight > 0 else float('inf')
-    
-    ##### optional log transform
-    data['distance'] = -math.log(fallback_weight) if fallback_weight > 0 else float('inf')
-
-1. Update CSV with desired weighted edges
-2. Add the weight='weight' parameter to the appropriate NetworkX centrality functions
-\
-                degree_centrality = nx.degree_centrality(G) # no weight\
-                betweenness_centrality = nx.betweenness_centrality(G,weight='weight')\
-                eigenvector_centrality = nx.eigenvector_centrality(G,weight='weight')\
-                closeness_centrality = nx.closeness_centrality(G,distance='weight')\
-        ##### Use the 'distance' attribute for centrality calculations given fallback strategy\
-                closeness_centrality = nx.closeness_centrality(G, distance='distance')\
-                betweenness_centrality = nx.betweenness_centrality(G, weight='distance')
+Example weighted adjacency matrix: network_centrality > agent_network_weighted_centrality.py
 
 ## Improvement ideas ##
 
