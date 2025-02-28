@@ -27,7 +27,7 @@ This open-source framework is released under the MIT License, and the code is av
 
 Temporal Dynamics: Add rolling adjacency matrices with reinforcement learning (RL) for more of an adaptive risk mitigation.
 
-Security Integration: Security policy. Map the AI-specific attack vectors to centrality metrics. 
+Security Integration: Security policy. Map the AI-specific attack vectors to centrality metrics (Done). 
 
 Validation: Run some of the benchmarking against hybrid network topologies with some adversarial node injections - 
 
