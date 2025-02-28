@@ -63,8 +63,8 @@ for u, v, data in G.edges(data=True):
                 betweenness_centrality = nx.betweenness_centrality(G,weight='weight')\
                 eigenvector_centrality = nx.eigenvector_centrality(G,weight='weight')\
                 closeness_centrality = nx.closeness_centrality(G,distance='weight')\
-        ##### Use the 'distance' attribute for centrality calculations given fallback strategy
-                closeness_centrality = nx.closeness_centrality(G, distance='distance')
+        ##### Use the 'distance' attribute for centrality calculations given fallback strategy\
+                closeness_centrality = nx.closeness_centrality(G, distance='distance')\
                 betweenness_centrality = nx.betweenness_centrality(G, weight='distance')
 
 ## Improvement ideas ##
