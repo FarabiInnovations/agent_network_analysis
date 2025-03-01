@@ -85,7 +85,7 @@ associated with the companry, dept or team, this can help reflect this non-mecha
 #### SLA Policy | Service Level Agreement (SLA.csv)
   * This would be a Service Level Agreement with any vendor or internal team, applied to any specific system component (node).
   
-  * SLA uptime with actual uptime\
+  * SLA uptime with actual uptime:\
   uptime_risk = (sla_uptime - actual_uptime) / sla_uptime\
   uptime_multiplier = 1 + (uptime_risk)
 
