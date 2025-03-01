@@ -39,7 +39,7 @@ Default is a mixed graph (direct and undirected edges)
   Where success = 1 (i.e. produces one unit of value), and an error is a negative value, 
   (e.g. -3 would mean an error negates 3 successful units of value). 
     
-  C = R * ErrorCost + (1−R) * SuccessValue 
+  C = FR * ErrorCost + (1−R) * SuccessValue 
 
 #### Total Success Revenue
 
