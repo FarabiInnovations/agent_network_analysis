@@ -55,7 +55,7 @@ Default is a mixed graph (direct and undirected edges)
 
  The 'ignore' value set to 1 will ignore the error policy for that node and behave as a classic system output
  (with some lingering limited default uncertainty applied i.e. for considerting things like latency etc.),
- with all other risk metrics still applying to the node, i.e. this would be a node that is not producing transformer output. This could be any non-LLM system component, (event bridge etc.).
+ with all other risk metrics still applying to the node, i.e. this would be a node that is not producing transformer output, or any system part that is not producing a distribution of outcomes, e.g. event bridge etc.
    
 
 #### Design Pattern Threats, Agentic or otherwise (design_threats.csv) 
