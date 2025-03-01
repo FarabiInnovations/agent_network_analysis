@@ -3,7 +3,12 @@ import matplotlib.pyplot as plt
 
 # ------------
 # Creating the Agent Registry table
-# Agent registry (AR): A detailed source documenting each agent’s role within the system, aligned with an Agent RACI matrix (Responsible, Accountable, Consulted, Informed). This includes an agent unique identifier (UID), job description, persona and policy UIDs. The agent registry also identifies the primary Foundational Model UID, source system (vendor or internal), model dependency UIDs, ACP UID, fallback mechanism and model bench UIDs, and type-I and type-II defined error thresholds (scaling factors).
+# Agent registry (AR): A detailed source documenting each agent’s role within the system, aligned with
+#  an Agent RACI matrix (Responsible, Accountable, Consulted, Informed). This includes an agent 
+#  unique identifier (UID), job description, persona and policy UIDs. The agent registry also 
+#  identifies the primary Foundational Model UID, source system (vendor or internal), model 
+#  dependency UIDs, ACP UID, fallback mechanism and model bench UIDs, and type-I and type-II 
+#  defined error thresholds (scaling factors).
 # https://medium.com/@ryanfattini/franchise-furanchaizu-automata-enterprise-alignment-with-emergent-potential-92545cabe462
 # ------------
 
