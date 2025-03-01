@@ -60,7 +60,7 @@ Default is a mixed graph (direct and undirected edges)
 
 #### Design Pattern Threats, Agentic or otherwise (design_threats.csv) 
 
- Initial baseline based on Ken Haung's analysis, toy example threats were all just to set 0.5. 
+ Security threats that a particular design pattern might introduce (e.g. jailbreaking etc.). These security threats can be applied per system component (node). Initial baseline threats were identifyed with Ken Haung's analysis, toy example threats were all just to set 0.5. 
  More threat types can be added and threat levels adjusted based on best approximation of reality. 
 
 #### Resource Threats - Towers Of Knowlege, Churn, Depth (resource_threats.csv)
