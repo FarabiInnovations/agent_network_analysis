@@ -6,10 +6,10 @@ Default is a mixed graph (direct and undirected edges)
 
 #### Non Normalized Risk Score with scaling factors: (alpha, beta, gamma, epsilon)
 
-   R = (alpha*DegreeCentrality) + 
-  (beta*BetweenessCentrality) + 
-  (gamma*EigenvectorCentrality) +
-  (epsilon*ClosenessCentrality)
+   R = (alpha * DegreeCentrality) + 
+  (beta * BetweenessCentrality) + 
+  (gamma * EigenvectorCentrality) +
+  (epsilon * ClosenessCentrality)
 
 #### Normalized Risk Score with scaling factors: (alpha, beta, gamma, epsilon)
 
