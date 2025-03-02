@@ -37,7 +37,7 @@ agent_registry_data = {
     ],
     "Persona UID": ["P_A1", "P_B1", "P_C1", "P_D1", "P_E1"],
     "Policy UID": ["Pol_A1", "Pol_B1", "Pol_C1", "Pol_D1", "Pol_E1"],
-    "Primary FM UID": ["Sonet_3.7", "FM_002", "FM_003", "FM_004", "FM_005"],
+    "Primary FM UID": ["Claude Sonnet 3.7", "FM_002", "FM_003", "FM_004", "FM_005"],
     "Source System": ["IBM_WatsonX", "AWS_Sagemaker", "Internal", "Internal", "Internal"],
     "Model Service UID": ["Human_Resources:Recruiting:Sales", "Dept:SubDept:Team", "Dept_C1", "Dept_D1", "Dept_E1"],
     "Model SME UID": ["Director HR", "VP SC", "VP Data", "VP Data", "VP Data"],
