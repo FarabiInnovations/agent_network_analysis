@@ -55,7 +55,7 @@ agent_registry_data = {
     "Error_Priority": [1,1,1,2,2] # defined by SME UID (subject matter expert)
 }
 
-# Convert to DataFrame
+# convert to DataFrame
 agent_registry_df = pd.DataFrame(agent_registry_data)
 
 #print(agent_registry_df.to_string())
@@ -73,7 +73,7 @@ table = ax.table(cellText=agent_registry_df.values,
                  loc='center')
 table.auto_set_font_size(False)
 table.set_fontsize(8)
-table.auto_set_column_width([i for i in range(len(agent_registry_df.columns))])  # Adjust column widths
+table.auto_set_column_width([i for i in range(len(agent_registry_df.columns))]) 
 plt.title("Agent Registry Table", fontsize=12)
 plt.show()
 
