@@ -36,6 +36,11 @@ def bernoulli_stats(success_count, n):
     return p_bar, variance, fisher_info
 
 
+# def gaussian_stats(success_count, n):
+# def poisson_stats(success_count, n):
+# def geometric_stats(success_count, n):
+
+
 # if __name__ == '__main__':
 #     success_count = 80
 #     total_trials = 100
