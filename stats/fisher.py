@@ -1,12 +1,13 @@
 # ------- #
-# Fisher Information
+# Fisher Information:
 # Negative expected value of the second derivitave of the log-likelihood
-# Gives us an indication, the higher the Fisher information the more confident we might be about 
-# the reliability of the parameter.   
+# Gives us an indication, the higher the Fisher information how reliable
+# our parameter estimations might be given the data.   
 # In tha case of transformer output to the business, we are considering useful/not useful output. 
 # In which case we are modelling this a Bernoulli distribution, defining the variance p(1-p)
-# and Fisher information 1/p(1-p) of the system and each node. This will indicate
-# how reliable each node (or the complete system) is in both its reliability to succeed or fail.
+# and Fisher information 1/p(1-p) for the system and each node. This will indicate
+# how reliable each node (or the complete system) is in both its reliability to succeed (higher values of p) or fail
+# lower values of p.
 # 
 # ------- #
 
