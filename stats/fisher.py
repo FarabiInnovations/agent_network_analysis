@@ -9,9 +9,9 @@
 # how reliable each node (or the complete system) is in both its reliability to succeed (higher values of p) or fail
 # lower values of p.
 
-# These test were by this comment by OWL on MSLT: discord.gg/machine-learning-street-talk-mlst-937356144060530778
-# It's an interesting argument they make, the argument that supersedes I think is that the Cramér-Rao bound basically guarantees you'll get hallucinations in a way that's much cleaner/stronger as a bound, in a way that supersedes the analysis here I feel
-# The mechanistic side of how hallucinations work would be interesting but it's certainly not the "root cause" of it I feel
+# These tests were inspired by this comment by OWL on MSLT: discord.gg/machine-learning-street-talk-mlst-937356144060530778
+# 'It's an interesting argument they make, the argument that supersedes I think is that the Cramér-Rao bound basically guarantees you'll get hallucinations in a way that's much cleaner/stronger as a bound, in a way that supersedes the analysis here I feel
+# The mechanistic side of how hallucinations work would be interesting but it's certainly not the "root cause" of it I feel'
 # ------- #
 
 def bernoulli_stats(success_count, n):
