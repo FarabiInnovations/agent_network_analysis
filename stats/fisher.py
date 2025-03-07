@@ -7,10 +7,12 @@
 # In which case we are modelling this a Bernoulli distribution, defining the variance p(1-p)
 # and Fisher information 1/p(1-p) for the system and each node. This will indicate
 # how reliable each node (or the complete system) is in both its reliability to succeed (higher values of p) or fail
-# lower values of p.
+# lower values of p. When p is close to either 0 or 1, it indicates the model is more sensitive to changes in p, meaning
+# the model is more decisive in its output.  
 
 # These tests were inspired by this comment by OWL on MSLT: discord.gg/machine-learning-street-talk-mlst-937356144060530778
-# 'It's an interesting argument they make, the argument that supersedes I think is that the Cramér-Rao bound basically guarantees you'll get hallucinations in a way that's much cleaner/stronger as a bound, in a way that supersedes the analysis here I feel
+# 'It's an interesting argument they make, the argument that supersedes I think is that the Cramér-Rao bound basically guarantees 
+# you'll get hallucinations in a way that's much cleaner/stronger as a bound, in a way that supersedes the analysis here I feel
 # The mechanistic side of how hallucinations work would be interesting but it's certainly not the "root cause" of it I feel'
 # ------- #
 
