@@ -3,10 +3,17 @@
 
 The framework serves as a working baseline for multi-agent risk analysis, providing scaffolding for exploratory analyses. 
 
+![Type 1 and Type 2 Errors with priority per node](./img/error_policy.png)
+
 #### Run any file with agent_network prefix 
 ```python3 agent_network_<filename>```
+
+![Risk Gradient per node](./img/gradient_risk.png)
+
 #### This file contains all the threat files in the MC contagion sim
 ```python3 agent_network_simulation_contagion_with_all_threats.py``` 
+
+![Monte Carlo Simulation with all risk files](./img/MC_sim_all.png)
 
  * More details on risk components: [definitions.md](./definitions.md)
 
