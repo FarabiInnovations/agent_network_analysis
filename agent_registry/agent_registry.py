@@ -36,8 +36,9 @@ agent_registry_data = {
         "Performs additional checks and optimizations on refined outputs.",
         "Final validation before responses are confirmed."
     ],
-    "Persona UID": ["P_A1", "P_B1", "P_C1", "P_D1", "P_E1"],
-    "Policy UID": ["Pol_A1", "Pol_B1", "Pol_C1", "Pol_D1", "Pol_E1"], # system and boundary rules with function and specialization
+    "Persona UID": ["P_A1", "P_B1", "P_C1", "P_D1", "P_E1"], # role personas; e.g. technical engineer, product manager, sales associate, call center tech etc.
+    "Agency Policy UID": ["Pol_A1", "Pol_B1", "Pol_C1", "Pol_D1", "Pol_E1"], # system and boundary rules with function and specialization
+    "Enterprise Alignment UID": ["Pol_A1", "Pol_B1", "Pol_C1", "Pol_D1", "Pol_E1"], # enterprise global polies for values, ethics, mission etc.
     "Primary FM UID": ["Claude Sonnet 3.7", "FM_002", "FM_003", "FM_004", "FM_005"],
     "Source System": ["IBM_WatsonX", "AWS_Sagemaker", "Internal", "Internal", "Internal"],
     "Model Service UID": ["Human_Resources:Recruiting:Sales:Sreening", "Dept:SubDept:Team:Function", "Dept_C1", "Dept_D1", "Dept_E1"],
